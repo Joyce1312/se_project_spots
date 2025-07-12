@@ -39,20 +39,20 @@ Spots is designed to simulate a basic user interface experience for a social pho
 
 ---
 
-## 🎨 Design Prototype
+## Design Prototype
 
 This project was built based on a Figma design. You can view the original prototype here:
 [View the Figma Design](https://www.figma.com/file/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project-%E2%80%94-Spots?type=design&node-id=2%3A60&mode=design&t=afgNFybdorZO6cQo-1)
 
 ---
 
-## 🌐 Live Demo
+## Live Demo
 
 You can view the deployed project here:  
-[Spots on GitHub Pages](https://your-github-username.github.io/your-repo-name)
+[Spots on GitHub Pages](https://joyce1312.github.io/se_project_spots/)
 
 ---
 
-## ✍️ Author
+## Author
 
 By **Joyce Yeung**
