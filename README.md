@@ -2,6 +2,8 @@
 
 **Spots** is an interactive social media web application that allows users to create, view, and interact with visual content. Users can upload new photos, remove existing ones, like posts from other users, and make small adjustments to their profile.
 
+**Video Walkthrough:** [Spots Demo](https://drive.google.com/file/d/1VKplpPnGAeka4lVnJNJ8yTNz6WsEnAqR/view?usp=sharing)
+
 ---
 
 ## Project Description
