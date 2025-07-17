@@ -1,0 +1,124 @@
+.modal {
+  visibility: hidden;
+  background-color: #00000080;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.modal_is-opened {
+  visibility: visible;
+}
+
+.modal__container {
+  max-width: 730px;
+  width: 100%;
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 32px 50px;
+  position: relative;
+}
+
+.modal__close-btn {
+  position: absolute;
+  top: 32px;
+  right: 50px;
+  height: 40px;
+  width: 40px;
+  background: url(../images/close.svg) no-repeat center / 40px 40px;
+  border: none;
+  padding: 0;
+}
+
+.modal__title {
+  margin: 0 0 32px;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__label {
+  margin: 0 0 32px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.1;
+  color: #212121b2;
+}
+
+.modal__input {
+  display: block;
+  margin: 8px 0 0;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #21212166;
+  padding: 16px 0;
+  text-indent: 12px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+
+.modal__input::placeholder {
+  color: #2121214d;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.modal__save-btn {
+  max-width: 156px;
+  min-height: 52px;
+  background-color: #212121;
+  border-radius: 8px;
+  color: #fcf5e5;
+  border: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1;
+}
+
+@media screen and (max-width: 627px) {
+  .modal__container {
+    max-width: 300px;
+    border-radius: 8px;
+    padding: 12px;
+  }
+
+  .modal__close-btn {
+    top: 12px;
+    right: 12px;
+  }
+  .modal__title {
+    margin: 0 0 24px;
+    font-size: 20px;
+  }
+
+  .modal__label {
+    margin: 0 0 24px;
+  }
+
+  .modal__input {
+    font-size: 16px;
+  }
+
+  .modal__input::placeholder {
+    font-size: 16px;
+  }
+
+  .modal__save-btn {
+    width: 100%;
+    max-width: none;
+  }
+}
