@@ -21,6 +21,7 @@
 }
 
 .modal__container {
+  box-sizing: border-box;
   max-width: 730px;
   width: 100%;
   border-radius: 8px;
@@ -97,7 +98,7 @@
   .modal__container {
     max-width: 300px;
     border-radius: 8px;
-    padding: 12px;
+    padding: 22px 12px 12px;
   }
 
   .modal__close-btn {
