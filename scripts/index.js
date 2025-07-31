@@ -61,6 +61,9 @@ function getCardElement(data) {
 
   cardLikeBtn.setAttribute("aria-label", "Like Post Button");
   cardLikeBtn.setAttribute("type", "button");
+  cardLikeBtn.addEventListener("click", (evt) => {
+    evt.target.classList.toggle("card__like-btn_clicked");
+  });
   cardTitle.textContent = data.name;
 
   return cardElement;

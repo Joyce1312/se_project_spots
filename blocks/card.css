@@ -33,9 +33,19 @@
   transition: opacity 0.3s ease;
 }
 
+.card__like-btn_clicked {
+  background-image: url(../images/like-clicked.svg);
+  opacity: 1;
+}
+
 .card__like-btn:hover {
   cursor: pointer;
   opacity: 1;
+}
+
+.card__like-btn_clicked:hover {
+  cursor: pointer;
+  opacity: 0.5;
 }
 
 @media screen and (max-width: 627px) {
