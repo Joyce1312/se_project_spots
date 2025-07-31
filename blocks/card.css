@@ -1,9 +1,28 @@
+.card {
+  position: relative;
+}
+
 .card__image {
   width: 100%;
   height: 413px;
   object-fit: cover;
   display: block;
   border-radius: 8px;
+}
+
+.card__del-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent url(../images/delete.svg) no-repeat center / 32px 32px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.card__del-btn:hover {
+  cursor: pointer;
+  background-image: url(../images/delete-hover.svg);
 }
 
 .card__content {

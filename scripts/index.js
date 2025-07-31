@@ -55,6 +55,7 @@ function getCardElement(data) {
   const cardTitle = cardElement.querySelector(".card__title");
   const cardImage = cardElement.querySelector(".card__image");
   const cardLikeBtn = cardElement.querySelector(".card__like-btn");
+  const cardDelBtn = cardElement.querySelector(".card__del-btn");
 
   cardImage.src = data.link;
   cardImage.alt = data.name;
@@ -64,7 +65,15 @@ function getCardElement(data) {
   cardLikeBtn.addEventListener("click", (evt) => {
     evt.target.classList.toggle("card__like-btn_clicked");
   });
+
   cardTitle.textContent = data.name;
+
+  cardDelBtn.setAttribute("aria-label", "Delete Post Button");
+  cardDelBtn.setAttribute("type", "button");
+  cardDelBtn.addEventListener("click", () => {
+    cardElement.remove();
+    cardElement = null;
+  });
 
   return cardElement;
 }
