@@ -45,6 +45,10 @@
   padding: 0;
 }
 
+.modal__close-btn:hover {
+  background-image: url(../images/close-b.svg);
+}
+
 .modal__title {
   margin: 0 0 32px;
   font-weight: 500;
@@ -73,10 +77,15 @@
   border: 1px solid #21212166;
   padding: 16px 0;
   text-indent: 12px;
+  color: #212121;
   font-weight: 500;
   font-size: 20px;
   line-height: 1;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+
+.modal__input:hover {
+  border-color: #212121;
 }
 
 .modal__input::placeholder {
@@ -107,6 +116,10 @@
   top: 0;
   right: -52.5px;
   background-image: url(../images/x-close.svg);
+}
+
+.modal__close-btn_type_preview:hover {
+  background-image: url(../images/close.svg);
 }
 
 .modal__image {
