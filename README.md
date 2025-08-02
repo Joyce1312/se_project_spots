@@ -11,6 +11,7 @@
 Spots is designed to simulate a basic user interface experience for a social photo-sharing platform. Users can:
 
 - View a gallery of beautiful scenic photographs
+- Preview a larger version of post
 - Like images using a custom SVG button
 - Add new posts with the “New Post” button
 - Edit their user profile (Ex: name or description)
@@ -22,6 +23,7 @@ Spots is designed to simulate a basic user interface experience for a social pho
 
 - **HTML5**: Semantic structure of the application
 - **CSS3**: Styling, responsive layout, and transitions
+- **JavaScript (ES6+)**:DOM manipulation, event handling, and dynamic modal functionality
 - **Flexbox**: For flexible, responsive layout
 - **SVG icons**: For scalable, sharp user interface icons (pencil, plus, like)
 - **BEM Methodology**: Clean and modular CSS naming convention
@@ -35,16 +37,28 @@ Spots is designed to simulate a basic user interface experience for a social pho
 
 ![Spots Homepage Desktop View](./images/desktop.png)
 
+![Spots Homepage Edit Profile Form](./images/desktop-edit.png)
+
+![Spots Homepage New Post Form](./images/desktop-add.png)
+
+![Spots Homepage Preview](./images/desktop-preview.png)
+
 ### Homepage Mobile View
 
 ![Spots Homepage Mobile View](./images/mobile.png)
+
+![Spots Homepage Edit Profile Form](./images/mobile-edit.png)
+
+![Spots Homepage New Post Form](./images/mobile-add.png)
+
+![Spots Homepage Preview](./images/mobile-preview.png)
 
 ---
 
 ## Design Prototype
 
 This project was built based on a Figma design. You can view the original prototype here:
-[View the Figma Design](https://www.figma.com/file/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project-%E2%80%94-Spots?type=design&node-id=2%3A60&mode=design&t=afgNFybdorZO6cQo-1)
+[View the Figma Design](https://www.figma.com/design/p7amENvGmugKHfrOif5p1E/Sprint-5-Project-Spots---March-2025?node-id=51-138&p=f&t=kYtKCMHxjHFEWwux-0)
 
 ---
 
