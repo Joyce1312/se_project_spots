@@ -131,7 +131,7 @@
   border-radius: 8px;
 }
 
-.modal__caption-wrapper {
+.modal__caption {
   background-color: #212121;
   border-radius: 8px;
   color: #fff;
@@ -141,10 +141,6 @@
   font-weight: 500;
   line-height: 1.2;
   font-size: 20px;
-}
-
-.modal__caption {
-  margin: 0;
 }
 
 @media screen and (max-width: 627px) {
