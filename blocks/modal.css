@@ -47,6 +47,7 @@
 
 .modal__close-btn:hover {
   background-image: url(../images/close-b.svg);
+  cursor: pointer;
 }
 
 .modal__title {

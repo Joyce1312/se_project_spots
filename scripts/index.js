@@ -1,4 +1,4 @@
-let initialCards = [
+const initialCards = [
   {
     name: "Golden Gate Bridge",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
@@ -34,10 +34,11 @@ const cardTemplate = document
   .content.querySelector(".card");
 const cardsContainter = document.querySelector(".cards__list");
 
+const closeButtons = document.querySelectorAll(".modal__close-btn");
+
 const profileEditBtn = document.querySelector(".profile__edit-btn");
 const editProfileModal = document.querySelector("#edit-profile-modal");
-const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
-const editProfileForm = editProfileModal.querySelector(".modal__form");
+const editProfileForm = document.forms["edit-profile-form"];
 const editProfileNameInput = editProfileModal.querySelector(
   "#profile-name-input"
 );
@@ -49,18 +50,16 @@ const profileDescriptionEl = document.querySelector(".profile__description");
 
 const postNewBtn = document.querySelector(".profile__add-btn");
 const newPostModal = document.querySelector("#new-post-modal");
-const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
-const newPostForm = newPostModal.querySelector(".modal__form");
+const newPostForm = document.forms["new-post-form"];
 const newPostLinkInput = newPostModal.querySelector("#card-image-input");
 const newPostCaptionInput = newPostModal.querySelector("#card-caption-input");
 
 const previewModal = document.querySelector("#preview-modal");
-const previewCloseBtn = previewModal.querySelector(".modal__close-btn");
 const previewImage = previewModal.querySelector(".modal__image");
 const previewCaption = previewModal.querySelector(".modal__caption");
 
 function getCardElement(data) {
-  const cardElement = cardTemplate.cloneNode(true);
+  let cardElement = cardTemplate.cloneNode(true);
   const cardTitle = cardElement.querySelector(".card__title");
   const cardImage = cardElement.querySelector(".card__image");
   const cardLikeBtn = cardElement.querySelector(".card__like-btn");
@@ -69,8 +68,6 @@ function getCardElement(data) {
   cardImage.src = data.link;
   cardImage.alt = data.name;
 
-  cardLikeBtn.setAttribute("aria-label", "Like Post Button");
-  cardLikeBtn.setAttribute("type", "button");
   cardLikeBtn.addEventListener("click", (evt) => {
     evt.target.classList.toggle("card__like-btn_clicked");
   });
@@ -102,26 +99,20 @@ function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
 }
 
+closeButtons.forEach((button) => {
+  const modal = button.closest(".modal");
+
+  button.addEventListener("click", () => closeModal(modal));
+});
+
 profileEditBtn.addEventListener("click", function () {
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
   openModal(editProfileModal);
 });
 
-editProfileCloseBtn.addEventListener("click", function () {
-  closeModal(editProfileModal);
-});
-
-previewCloseBtn.addEventListener("click", () => {
-  closeModal(previewModal);
-});
-
 postNewBtn.addEventListener("click", function () {
   openModal(newPostModal);
-});
-
-newPostCloseBtn.addEventListener("click", function () {
-  closeModal(newPostModal);
 });
 
 function handleProfileFormSubmit(evt) {
@@ -143,6 +134,9 @@ function handleAddCardSubmit(evt) {
   };
   cardsContainter.prepend(getCardElement(newPost));
   closeModal(newPostModal);
+
+  newPostCaptionInput.value = "";
+  newPostLinkInput.value = "";
 }
 
 newPostForm.addEventListener("submit", handleAddCardSubmit);
