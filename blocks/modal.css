@@ -97,13 +97,20 @@
   line-height: 1;
 }
 
+.modal__input_type_error {
+  border: 1px solid #ff000099;
+}
+
 .modal__error {
   display: block;
   margin: 8px 0 0;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.1;
+  color: #ff0000b2;
 }
 
 .modal__save-btn {
-  cursor: pointer;
   max-width: 156px;
   min-height: 52px;
   background-color: #212121;
@@ -113,6 +120,15 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 1;
+}
+
+.modal__save-btn:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.modal__save-btn_inactive {
+  opacity: 0.5;
 }
 
 .modal__content {
