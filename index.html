@@ -87,14 +87,24 @@
                 type="text"
                 class="modal__input"
                 placeholder="Type your name"
-            /></label>
+                minlength="2"
+                maxlength="40"
+                required
+              />
+              <span class="modal__error"></span>
+            </label>
             <label for="profile-description-input" class="modal__label"
               >Description<input
                 id="profile-description-input"
                 type="text"
                 class="modal__input"
                 placeholder="Describe yourself"
-            /></label>
+                minlength="2"
+                maxlength="200"
+                required
+              />
+              <span class="modal__error"></span>
+            </label>
             <button
               aria-label="Save Profile Changes Button"
               type="submit"
@@ -118,14 +128,20 @@
                 type="url"
                 class="modal__input"
                 placeholder="Paste a link to the picture"
-            /></label>
+                required />
+              <span class="modal__error"></span
+            ></label>
             <label for="card-caption-input" class="modal__label"
               >Description<input
                 id="card-caption-input"
                 type="text"
                 class="modal__input"
                 placeholder="Type your caption"
-            /></label>
+                minlength="3"
+                maxlength="30"
+                required />
+              <span class="modal__error"></span
+            ></label>
             <button
               aria-label="Save New Post Button"
               type="submit"

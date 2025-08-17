@@ -135,8 +135,8 @@ function handleAddCardSubmit(evt) {
   cardsContainter.prepend(getCardElement(newPost));
   closeModal(newPostModal);
 
-  newPostCaptionInput.value = "";
-  newPostLinkInput.value = "";
+  newPostCaptionInput.value = evt.target.reset();
+  newPostLinkInput.value = evt.target.reset();
 }
 
 newPostForm.addEventListener("submit", handleAddCardSubmit);

@@ -68,6 +68,7 @@
   font-size: 16px;
   line-height: 1.1;
   color: #212121b2;
+  display: block;
 }
 
 .modal__input {
@@ -96,7 +97,13 @@
   line-height: 1;
 }
 
+.modal__error {
+  display: block;
+  margin: 8px 0 0;
+}
+
 .modal__save-btn {
+  cursor: pointer;
   max-width: 156px;
   min-height: 52px;
   background-color: #212121;
