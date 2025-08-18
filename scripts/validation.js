@@ -56,7 +56,7 @@ const resetValidation = (formElement, inputList, config) => {
   });
 };
 
-const setEventListners = (formElement, config) => {
+const setEventListeners = (formElement, config) => {
   const inputList = Array.from(
     formElement.querySelectorAll(config.inputSelector)
   );
@@ -74,7 +74,7 @@ const setEventListners = (formElement, config) => {
 const enableValidation = (config) => {
   const formList = document.querySelectorAll(config.formSelector);
   formList.forEach((formElement) => {
-    setEventListners(formElement, config);
+    setEventListeners(formElement, config);
   });
 };
 

@@ -32,7 +32,7 @@ const initialCards = [
 const cardTemplate = document
   .querySelector("#card-template")
   .content.querySelector(".card");
-const cardsContainter = document.querySelector(".cards__list");
+const cardsContainer = document.querySelector(".cards__list");
 
 const closeButtons = document.querySelectorAll(".modal__close-btn");
 
@@ -162,7 +162,7 @@ function handleAddCardSubmit(evt) {
     name: newPostCaptionInput.value,
     link: newPostLinkInput.value,
   };
-  cardsContainter.prepend(getCardElement(newPost));
+  cardsContainer.prepend(getCardElement(newPost));
   disableBtn(newPostForm);
   closeModal(newPostModal);
   evt.target.reset();
@@ -171,7 +171,7 @@ function handleAddCardSubmit(evt) {
 newPostForm.addEventListener("submit", handleAddCardSubmit);
 
 initialCards.forEach(function (item) {
-  cardsContainter.append(getCardElement(item));
+  cardsContainer.append(getCardElement(item));
 });
 
 modalList.forEach((modalElement) => {
