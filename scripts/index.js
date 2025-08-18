@@ -36,6 +36,8 @@ const cardsContainter = document.querySelector(".cards__list");
 
 const closeButtons = document.querySelectorAll(".modal__close-btn");
 
+const modalList = document.querySelectorAll(".modal");
+
 const profileEditBtn = document.querySelector(".profile__edit-btn");
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileForm = document.forms["edit-profile-form"];
@@ -91,12 +93,30 @@ function getCardElement(data) {
   return cardElement;
 }
 
+function escClose(evt) {
+  if (evt.key === "Escape") {
+    modalList.forEach((modalElement) => {
+      if (modalElement.classList.contains("modal_is-opened")) {
+        closeModal(modalElement);
+      }
+    });
+  }
+}
+
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
+  document.addEventListener("keydown", escClose);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
+  document.removeEventListener("keydown", escClose);
+}
+
+function disableBtn(formElement) {
+  const saveBtn = formElement.querySelector(".modal__save-btn");
+  saveBtn.classList.add("modal__save-btn_inactive");
+  saveBtn.disabled = true;
 }
 
 closeButtons.forEach((button) => {
@@ -108,10 +128,20 @@ closeButtons.forEach((button) => {
 profileEditBtn.addEventListener("click", function () {
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
+  resetValidation(
+    editProfileForm,
+    [editProfileNameInput, editProfileDescriptionInput],
+    settings
+  );
   openModal(editProfileModal);
 });
 
 postNewBtn.addEventListener("click", function () {
+  resetValidation(
+    newPostForm,
+    [newPostCaptionInput, newPostLinkInput],
+    settings
+  );
   openModal(newPostModal);
 });
 
@@ -133,14 +163,19 @@ function handleAddCardSubmit(evt) {
     link: newPostLinkInput.value,
   };
   cardsContainter.prepend(getCardElement(newPost));
+  disableBtn(newPostForm);
   closeModal(newPostModal);
-
-  newPostCaptionInput.value = evt.target.reset();
-  newPostLinkInput.value = evt.target.reset();
+  evt.target.reset();
 }
 
 newPostForm.addEventListener("submit", handleAddCardSubmit);
 
 initialCards.forEach(function (item) {
   cardsContainter.append(getCardElement(item));
+});
+
+modalList.forEach((modalElement) => {
+  modalElement.addEventListener("click", (evt) => {
+    closeModal(evt.target);
+  });
 });
