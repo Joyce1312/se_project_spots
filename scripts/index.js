@@ -53,6 +53,7 @@ const profileDescriptionEl = document.querySelector(".profile__description");
 const postNewBtn = document.querySelector(".profile__add-btn");
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostForm = document.forms["new-post-form"];
+const postSaveBtn = newPostForm.querySelector(".modal__save-btn");
 const newPostLinkInput = newPostModal.querySelector("#card-image-input");
 const newPostCaptionInput = newPostModal.querySelector("#card-caption-input");
 
@@ -93,6 +94,12 @@ function getCardElement(data) {
   return cardElement;
 }
 
+function renderCard(item, method = "prepend") {
+  const cardElement = getCardElement(item);
+
+  cardsContainer[method](cardElement);
+}
+
 function escClose(evt) {
   if (evt.key === "Escape") {
     modalList.forEach((modalElement) => {
@@ -113,12 +120,6 @@ function closeModal(modal) {
   document.removeEventListener("keydown", escClose);
 }
 
-function disableBtn(formElement) {
-  const saveBtn = formElement.querySelector(".modal__save-btn");
-  saveBtn.classList.add("modal__save-btn_inactive");
-  saveBtn.disabled = true;
-}
-
 closeButtons.forEach((button) => {
   const modal = button.closest(".modal");
 
@@ -137,11 +138,6 @@ profileEditBtn.addEventListener("click", function () {
 });
 
 postNewBtn.addEventListener("click", function () {
-  resetValidation(
-    newPostForm,
-    [newPostCaptionInput, newPostLinkInput],
-    settings
-  );
   openModal(newPostModal);
 });
 
@@ -162,20 +158,24 @@ function handleAddCardSubmit(evt) {
     name: newPostCaptionInput.value,
     link: newPostLinkInput.value,
   };
-  cardsContainer.prepend(getCardElement(newPost));
-  disableBtn(newPostForm);
-  closeModal(newPostModal);
+  //cardsContainer.prepend(getCardElement(newPost));
+  renderCard(newPost, "prepend");
   evt.target.reset();
+  disableBtn(postSaveBtn, settings);
+  closeModal(newPostModal);
 }
 
 newPostForm.addEventListener("submit", handleAddCardSubmit);
 
 initialCards.forEach(function (item) {
-  cardsContainer.append(getCardElement(item));
+  renderCard(item, "append");
+  // cardsContainer.append(getCardElement(item));
 });
 
 modalList.forEach((modalElement) => {
   modalElement.addEventListener("click", (evt) => {
-    closeModal(evt.target);
+    if (evt.target === evt.currentTarget) {
+      closeModal(evt.target);
+    }
   });
 });
