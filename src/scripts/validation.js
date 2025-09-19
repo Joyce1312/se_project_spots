@@ -34,7 +34,7 @@ const checkInputValidity = (formElement, inputElement, config) => {
   }
 };
 
-const hasInvalidInput = (inputList, config) => {
+const hasInvalidInput = (inputList) => {
   return inputList.some((inputElement) => {
     return !inputElement.validity.valid;
   });
@@ -46,7 +46,7 @@ const disableBtn = (buttonElement, config) => {
 };
 
 const toggleButtonState = (inputList, buttonElement, config) => {
-  if (hasInvalidInput(inputList, config)) {
+  if (hasInvalidInput(inputList)) {
     disableBtn(buttonElement, config);
   } else {
     buttonElement.classList.remove(config.inactiveButtonClass);
@@ -83,3 +83,5 @@ const enableValidation = (config) => {
 };
 
 enableValidation(settings);
+
+export { settings, resetValidation, enableValidation, disableBtn };
