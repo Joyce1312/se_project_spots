@@ -35,23 +35,23 @@ Spots is designed to simulate a basic user interface experience for a social pho
 
 ### Homepage Desktop View
 
-![Spots Homepage Desktop View](./images/desktop.png)
+![Spots Homepage Desktop View](./src/images/desktop.png)
 
-![Spots Homepage Edit Profile Form](./images/desktop-edit.png)
+![Spots Homepage Edit Profile Form](./src/images/desktop-edit.png)
 
-![Spots Homepage New Post Form](./images/desktop-add.png)
+![Spots Homepage New Post Form](./src/images/desktop-add.png)
 
-![Spots Homepage Preview](./images/desktop-preview.png)
+![Spots Homepage Preview](./src/images/desktop-preview.png)
 
 ### Homepage Mobile View
 
-![Spots Homepage Mobile View](./images/mobile.png)
+![Spots Homepage Mobile View](./src/images/mobile.png)
 
-![Spots Homepage Edit Profile Form](./images/mobile-edit.png)
+![Spots Homepage Edit Profile Form](./src/images/mobile-edit.png)
 
-![Spots Homepage New Post Form](./images/mobile-add.png)
+![Spots Homepage New Post Form](./src/images/mobile-add.png)
 
-![Spots Homepage Preview](./images/mobile-preview.png)
+![Spots Homepage Preview](./src/images/mobile-preview.png)
 
 ---
 
