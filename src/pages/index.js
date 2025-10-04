@@ -7,7 +7,7 @@ import {
   enableValidation,
   disableBtn,
 } from "../scripts/validation.js";
-import { setButtonText } from "../utils/helpers.js";
+import { setButtonText, handleSubmit } from "../utils/helpers.js";
 
 // const initialCards = [
 //   {
@@ -54,9 +54,9 @@ api
     cards.forEach((card) => {
       renderCard(card, "append");
     });
-    users.name = profileNameEl.textContent;
-    users.about = profileDescriptionEl.textContent;
-    users.avatar = profileAvatarEl.src;
+    profileNameEl.textContent = users.name;
+    profileDescriptionEl.textContent = users.about;
+    profileAvatarEl.src = users.avatar;
   })
   .catch((err) => {
     console.error(err);
@@ -101,6 +101,9 @@ const newPostCaptionInput = newPostModal.querySelector("#card-caption-input");
 
 const deleteModal = document.querySelector("#delete-modal");
 const deleteForm = document.forms["delete-form"];
+const deleteCancelBtn = deleteForm.querySelector(
+  ".modal__save-btn_type_cancel"
+);
 
 const previewModal = document.querySelector("#preview-modal");
 const previewImage = previewModal.querySelector(".modal__image");
@@ -214,63 +217,49 @@ avatarEditBtn.addEventListener("click", () => {
   openModal(editAvatarModal);
 });
 
+deleteCancelBtn.addEventListener("click", () => {
+  closeModal(deleteModal);
+});
+
 function handleProfileFormSubmit(evt) {
-  evt.preventDefault();
-  const submitBtn = evt.submitter;
-  setButtonText(submitBtn, true);
-  api
-    .editUserInfo({
-      name: editProfileNameInput.value,
-      about: editProfileDescriptionInput.value,
-    })
-    .then((data) => {
-      profileNameEl.textContent = data.name;
-      profileDescriptionEl.textContent = data.about;
-      closeModal(editProfileModal);
-    })
-    .catch((err) => {
-      console.error(err);
-    })
-    .finally(() => {
-      setButtonText(submitBtn, false);
-    });
+  function makeRequest() {
+    return api
+      .editUserInfo({
+        name: editProfileNameInput.value,
+        about: editProfileDescriptionInput.value,
+      })
+      .then((data) => {
+        profileNameEl.textContent = data.name;
+        profileDescriptionEl.textContent = data.about;
+        closeModal(editProfileModal);
+      });
+  }
+  handleSubmit(makeRequest, evt);
 }
 
 function handleAvatarFormSubmit(evt) {
-  evt.preventDefault();
-  const submitBtn = evt.submitter;
-  setButtonText(submitBtn, true);
-  api
-    .updateUserAvatar({ avatar: editAvatarLinkInput.value })
-    .then((data) => {
-      profileAvatarEl.src = data.avatar;
-      closeModal(editAvatarModal);
-    })
-    .catch((err) => {
-      console.error(err);
-    })
-    .finally(() => {
-      setButtonText(submitBtn, false);
-    });
+  function makeRequest() {
+    return api
+      .updateUserAvatar({
+        avatar: editAvatarLinkInput.value,
+      })
+      .then((data) => {
+        profileAvatarEl.src = data.avatar;
+        closeModal(editAvatarModal);
+      });
+  }
+  handleSubmit(makeRequest, evt);
 }
 
 function handleDeleteSubmit(evt) {
-  evt.preventDefault();
-  const submitBtn = evt.submitter;
-  setButtonText(submitBtn, true, "Delete", "Deleting...");
-  api
-    .deleteCard(selectedCardId)
-    .then(() => {
+  function makeRequest() {
+    return api.deleteCard(selectedCardId).then(() => {
       selectedCard.remove();
       selectedCard = null;
       closeModal(deleteModal);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-    .finally(() => {
-      setButtonText(submitBtn, false, "Delete", "Deleting...");
     });
+  }
+  handleSubmit(makeRequest, evt, "Deleting...");
 }
 
 editProfileForm.addEventListener("submit", handleProfileFormSubmit);
@@ -278,25 +267,21 @@ editAvatarForm.addEventListener("submit", handleAvatarFormSubmit);
 deleteForm.addEventListener("submit", handleDeleteSubmit);
 
 function handleAddCardSubmit(evt) {
-  evt.preventDefault();
-  const submitBtn = evt.submitter;
-  setButtonText(submitBtn, true);
   // Test Link: https://images.unsplash.com/photo-1556079337-a837a2d11f04?w=1600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Ym9zdG9ufGVufDB8fDB8fHww
   // Test Name: Boston
-  api
-    .addCard({ name: newPostCaptionInput.value, link: newPostLinkInput.value })
-    .then((data) => {
-      renderCard(data, "prepend");
-      evt.target.reset();
-      disableBtn(postSaveBtn, settings);
-      closeModal(newPostModal);
-    })
-    .catch((err) => {
-      console.error(err);
-    })
-    .finally(() => {
-      setButtonText(submitBtn, false);
-    });
+  function makeRequest() {
+    api
+      .addCard({
+        name: newPostCaptionInput.value,
+        link: newPostLinkInput.value,
+      })
+      .then((data) => {
+        renderCard(data, "prepend");
+        disableBtn(postSaveBtn, settings);
+        closeModal(newPostModal);
+      });
+  }
+  handleSubmit(makeRequest, evt);
 }
 
 newPostForm.addEventListener("submit", handleAddCardSubmit);
