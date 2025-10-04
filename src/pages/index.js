@@ -270,7 +270,7 @@ function handleAddCardSubmit(evt) {
   // Test Link: https://images.unsplash.com/photo-1556079337-a837a2d11f04?w=1600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Ym9zdG9ufGVufDB8fDB8fHww
   // Test Name: Boston
   function makeRequest() {
-    api
+    return api
       .addCard({
         name: newPostCaptionInput.value,
         link: newPostLinkInput.value,
