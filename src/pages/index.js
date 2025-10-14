@@ -246,6 +246,7 @@ function handleAvatarFormSubmit(evt) {
       .then((data) => {
         profileAvatarEl.src = data.avatar;
         closeModal(editAvatarModal);
+        disableBtn(evt.submitter, settings);
       });
   }
   handleSubmit(makeRequest, evt);
