@@ -58,7 +58,7 @@ The app is connected to the **TripleTen Spots API**:
 
 ## Screenshots
 
-### Homepage Desktop View
+### Desktop View
 
 ![Spots Homepage Desktop View](./src/images/desktop.png)
 
@@ -68,7 +68,7 @@ The app is connected to the **TripleTen Spots API**:
 
 ![Spots Homepage Preview](./src/images/desktop-preview.png)
 
-### Homepage Mobile View
+### Mobile View
 
 ![Spots Homepage Mobile View](./src/images/mobile.png)
 
